@@ -37,12 +37,25 @@
       newMessage: String,
       isBotReplying: Boolean,
     },
+    watch: {
+      currentChat: {
+        handler() {
+          this.scrollToBottom();
+        },
+        deep: true,
+      },
+    },
     methods: {
       sendMessage() {
         this.$emit('sendMessage');
       },
       scrollToBottom() {
-        this.$emit('scrollToBottom');
+        this.$nextTick(() => {
+          const chatBody = this.$refs.chatBody;
+          if (chatBody) {
+            chatBody.scrollTop = chatBody.scrollHeight;
+          }
+        });
       },
     },
   };

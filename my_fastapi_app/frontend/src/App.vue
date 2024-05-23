@@ -17,7 +17,7 @@
       />
       <div class="content">
         <HomePage v-if="currentPage === 'home'" @submitForm="submitForm" :form="form" @update:form="updateForm" />
-        <ChatPage v-else :currentChat="currentChat" :newMessage="newMessage" :isBotReplying="isBotReplying" @sendMessage="sendMessage" @scrollToBottom="scrollToBottom" @update:newMessage="updateNewMessage" />
+        <ChatPage v-else :currentChat="currentChat" :newMessage="newMessage" :isBotReplying="isBotReplying" @sendMessage="sendMessage" @update:newMessage="updateNewMessage" />
       </div>
     </div>
   </div>
@@ -74,30 +74,13 @@ export default {
         this.newMessage = '';
         this.isBotReplying = true;
         this.reply();
-        this.scrollToBottom();
       }
     },
     reply() {
       setTimeout(() => {
         this.currentChat.messages.push({ content: 'This is a reply from AIS Paper Factory.', type: 'bot' });
         this.isBotReplying = false;
-        this.promptUser();
-        this.scrollToBottom();
       }, 1000);
-    },
-    promptUser() {
-      setTimeout(() => {
-        const userResponse = prompt('ChatGPT is waiting for your input:');
-        if (userResponse) {
-          this.currentChat.messages.push({ content: userResponse, type: 'user' });
-        }
-      }, 500);
-    },
-    scrollToBottom() {
-      this.$nextTick(() => {
-        const chatBody = this.$refs.chatBody;
-        chatBody.scrollTop = chatBody.scrollHeight;
-      });
     },
     goToHomePage() {
       this.currentPage = 'home';
