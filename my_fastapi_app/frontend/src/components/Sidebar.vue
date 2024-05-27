@@ -41,6 +41,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    box-shadow: 5px 0px 5px -2px gray;
   }
   
   .sidebar button {

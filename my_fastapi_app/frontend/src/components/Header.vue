@@ -32,13 +32,14 @@
   
   <style>
   .header {
-    width: 100%;
+    /* width: 100%; */
     background-color: #004b8d;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    box-shadow: 0px 5px 5px -2px gray;
   }
   
   .header .logo {
