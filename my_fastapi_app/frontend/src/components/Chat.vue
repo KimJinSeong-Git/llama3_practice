@@ -71,7 +71,7 @@
   .chat-header {
     background-color: #004b8d;
     color: #fff;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     align-items: center;
   }
