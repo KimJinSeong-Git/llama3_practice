@@ -1,9 +1,9 @@
 <template>
     <div class="chat-container">
       <div class="chat-header">
-        <div class="avatar">
+        <!-- <div class="avatar">
           <img src="https://via.placeholder.com/50" alt="Avatar" />
-        </div>
+        </div> -->
         <div class="title">Based on Llama3-8B</div>
       </div>
       <div class="chat-body" ref="chatBody">
@@ -70,8 +70,9 @@
   
   .chat-header {
     background-color: #004b8d;
+    border-radius: 10px 10px 0 0;
     color: #fff;
-    padding: 15px;
+    padding: 10px 50px;
     display: flex;
     align-items: center;
   }
@@ -87,6 +88,7 @@
   }
   
   .chat-body {
+    background-color: #eff8ff;
     padding: 20px;
     flex-grow: 1;
     overflow-y: auto;
@@ -102,15 +104,17 @@
   }
   
   .chat-body .user {
-    background-color: #004b8d;
+    background-color: #547a9b;
     color: #fff;
     align-self: flex-end;
+    box-shadow: 5px 5px 5px -5px gray;
   }
   
   .chat-body .bot {
-    background-color: #f1f1f1;
+    background-color: #fbfdff;
     color: #333;
     align-self: flex-start;
+    box-shadow: 5px 5px 5px -5px gray;
   }
   
   .chat-footer {
