@@ -35,7 +35,7 @@
   <style>
   .sidebar {
     width: 200px;
-    background-color: #004b8d;
+    background-color: #003766;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@
   
   .sidebar li:hover,
   .sidebar li.active {
-    background-color: #003766;
+    background-color: #005aa8;
   }
   </style>
   
