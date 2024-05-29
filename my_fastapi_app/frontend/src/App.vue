@@ -28,6 +28,7 @@ import Header from './components/Header.vue';
 import Sidebar from './components/Sidebar.vue';
 import HomePage from './components/Home.vue';
 import ChatPage from './components/Chat.vue';
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -68,19 +69,24 @@ export default {
       this.currentChatIndex = index;
       this.currentPage = 'chat';
     },
-    sendMessage() {
+    async sendMessage() {
       if (this.newMessage.trim() !== '') {
         this.currentChat.messages.push({ content: this.newMessage, type: 'user' });
+        const prompt = this.newMessage;
         this.newMessage = '';
         this.isBotReplying = true;
-        this.reply();
+
+        try {
+          const response = await axios.post('/api/sendPrompt', { prompt });
+          const reply = response.data.reply;
+          this.currentChat.messages.push({ content: reply, type: 'bot' });
+        } catch (error) {
+          console.error('Error fetching reply:', error);
+          this.currentChat.messages.push({ content: 'Error fetching reply from server.', type: 'bot' });
+        } finally {
+          this.isBotReplying = false;
+        }
       }
-    },
-    reply() {
-      setTimeout(() => {
-        this.currentChat.messages.push({ content: 'This is a reply from AIS Paper Factory.', type: 'bot' });
-        this.isBotReplying = false;
-      }, 1000);
     },
     goToHomePage() {
       this.currentPage = 'home';
