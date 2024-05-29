@@ -4,27 +4,28 @@
     <form @submit.prevent="submitForm" class="form-container">
       <div class="form-group">
         <label for="context">Context (C):</label>
-        <textarea id="context" :value="form.context" @input="$emit('update:form', { ...form, context: $event.target.value })"></textarea>
+        <textarea id="context" :value="form.context" @input="$emit('update:form', { ...form, context: $event.target.value })" placeholder="Providing background information helps the LLM understand the specific scenario."></textarea>
+        
       </div>
       <div class="form-group">
         <label for="objective">Output or Objective (O):</label>
-        <textarea id="objective" :value="form.objective" @input="$emit('update:form', { ...form, objective: $event.target.value })"></textarea>
+        <textarea id="objective" :value="form.objective" @input="$emit('update:form', { ...form, objective: $event.target.value })" placeholder="Clearly defining the task directs the LLM’s focus."></textarea>
       </div>
       <div class="form-group">
         <label for="specificity">Specificity or Style (S):</label>
-        <textarea id="specificity" :value="form.specificity" @input="$emit('update:form', { ...form, specificity: $event.target.value })"></textarea>
+        <textarea id="specificity" :value="form.specificity" @input="$emit('update:form', { ...form, specificity: $event.target.value })" placeholder="Specifying the desired writing style aligns the LLM response."></textarea>
       </div>
       <div class="form-group">
         <label for="task">Task or Tone (T):</label>
-        <textarea id="task" :value="form.task" @input="$emit('update:form', { ...form, task: $event.target.value })"></textarea>
+        <textarea id="task" :value="form.task" @input="$emit('update:form', { ...form, task: $event.target.value })" placeholder="Setting the tone ensures the response resonates with the required sentiment."></textarea>
       </div>
       <div class="form-group">
         <label for="assumptions">Assumptions or Audience (A):</label>
-        <textarea id="assumptions" :value="form.assumptions" @input="$emit('update:form', { ...form, assumptions: $event.target.value })"></textarea>
+        <textarea id="assumptions" :value="form.assumptions" @input="$emit('update:form', { ...form, assumptions: $event.target.value })" placeholder="Identifying the intended audience tailors the LLM’s response to be targeted to an audience."></textarea>
       </div>
       <div class="form-group">
         <label for="requirements">Requirements or Response (R):</label>
-        <textarea id="requirements" :value="form.requirements" @input="$emit('update:form', { ...form, requirements: $event.target.value })"></textarea>
+        <textarea id="requirements" :value="form.requirements" @input="$emit('update:form', { ...form, requirements: $event.target.value })" placeholder="Providing the response format, like text or json, ensures the LLM outputs, and help build pipelines."></textarea>
       </div>
       <button type="submit" class="submit-button">Submit</button>
     </form>
