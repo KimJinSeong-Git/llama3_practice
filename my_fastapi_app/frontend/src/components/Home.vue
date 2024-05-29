@@ -1,18 +1,30 @@
 <template>
   <div class="home-page">
-    <h1>Home Page</h1>
+    <h1>Prompt Setting</h1>
     <form @submit.prevent="submitForm" class="form-container">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" :value="form.name" @input="$emit('update:form', { ...form, name: $event.target.value })" />
+        <label for="context">Context (C):</label>
+        <textarea id="context" :value="form.context" @input="$emit('update:form', { ...form, context: $event.target.value })"></textarea>
       </div>
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" :value="form.email" @input="$emit('update:form', { ...form, email: $event.target.value })" />
+        <label for="objective">Output or Objective (O):</label>
+        <textarea id="objective" :value="form.objective" @input="$emit('update:form', { ...form, objective: $event.target.value })"></textarea>
       </div>
       <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" :value="form.message" @input="$emit('update:form', { ...form, message: $event.target.value })"></textarea>
+        <label for="specificity">Specificity or Style (S):</label>
+        <textarea id="specificity" :value="form.specificity" @input="$emit('update:form', { ...form, specificity: $event.target.value })"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="task">Task or Tone (T):</label>
+        <textarea id="task" :value="form.task" @input="$emit('update:form', { ...form, task: $event.target.value })"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="assumptions">Assumptions or Audience (A):</label>
+        <textarea id="assumptions" :value="form.assumptions" @input="$emit('update:form', { ...form, assumptions: $event.target.value })"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="requirements">Requirements or Response (R):</label>
+        <textarea id="requirements" :value="form.requirements" @input="$emit('update:form', { ...form, requirements: $event.target.value })"></textarea>
       </div>
       <button type="submit" class="submit-button">Submit</button>
     </form>
@@ -53,8 +65,11 @@ export default {
 }
 
 .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 15px;
-  width: 90%;
+  width: 100%;
 }
 
 .form-group label {
@@ -66,13 +81,11 @@ export default {
 .form-group input,
 .form-group textarea {
   width: 100%;
+  height: 80px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-}
-
-.form-group textarea {
-  resize: vertical;
+  resize: none;
 }
 
 .submit-button {

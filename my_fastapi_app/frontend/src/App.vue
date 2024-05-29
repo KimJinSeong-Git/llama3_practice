@@ -88,14 +88,19 @@ export default {
         }
       }
     },
+    async submitForm(form) {
+      try {
+        const response = await axios.post('/api/submitForm', form);
+        alert(`Form submitted: ${JSON.stringify(response.data)}`);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+    },
     goToHomePage() {
       this.currentPage = 'home';
     },
     login() {
       alert(`Logged in with ID: ${this.loginId}`);
-    },
-    submitForm(form) {
-      alert(`Form submitted: ${JSON.stringify(form)}`);
     },
     updateNewMessage(message) {
       this.newMessage = message;
